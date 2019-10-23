@@ -22,9 +22,12 @@ namespace DevDashboardProject
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vue").Include(
+                     "~/Scripts/vue.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                     "~/Content/bulma.css",
+                     "~/Content/site.css"));
         }
     }
 }
