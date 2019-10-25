@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    background:#000;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +21,28 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar {
+    background-color: #1C1C1C;
+    color:#fff;
+    line-height:52px;
+}
+.navbar a {color:whitesmoke; padding-left:15px;}
+.side-nav {
+    margin-top: 12px;
+    padding-top: 25px !important;
+}
+.dashboard-container {padding:30px;}
+.numeric-tile .tile-number {font-size: 80px; text-align:center; line-height:155px;}
+.numeric-tile.errors .tile-number {color:#8f2b2b;}
+
+.menu-list a.is-active {background-color:whitesmoke; color:#000000;}
+.menu-list a {
+    color: whitesmoke;
+}
+.menu-list a:hover {
+    background-color:rgba(0,0,0,0.0);
+    color: whitesmoke;
+    text-decoration:underline;
 }

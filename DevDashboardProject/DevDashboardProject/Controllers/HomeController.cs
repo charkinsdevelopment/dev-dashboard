@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DevDashboardProject.Models;
 
 namespace DevDashboardProject.Controllers
 {
@@ -10,7 +11,8 @@ namespace DevDashboardProject.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            DashboardViewModel vm = new DashboardViewModel();
+            return View(vm);
         }
 
         public ActionResult About()

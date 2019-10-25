@@ -1,17 +1,92 @@
-﻿@{
+﻿@model DevDashboardProject.Models.DashboardViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-
-<section class="hero is-medium is-light is-bold is-fullwidth">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                PSM | Dev Connect
-            </h1>
-            <h2 class="subtitle">
-                Modern Data Analysis for Developers
-            </h2>
+<div class="dashboard-container">
+    <section class="section">
+        <h2 class="title is-1">Week of 10-22-2019</h2>
+        <p class="title">Leader Board</p>
+        <p class="subtitle">Race For Number 1</p>
+        <div class="table-container">
+            <table class="table is-bordered is-striped is-fullwidth is-hoverable is-narrow">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Tickets Completed This Week</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var leader in Model.LeaderBoards.OrderBy(f => f.Name))
+                    {
+                        <tr>
+                            <td>@leader.Name</td>
+                            <td>@leader.TicketsCompleted</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-    </div>
-</section>
+    </section>
+    <section class="section">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-12">
+                <div class="tile">
+                    <div class="tile is-parent numeric-tile">
+                        <article class="tile is-child notification has-background-dark has-text-light">
+                            <p class="title">Tickets Published</p>
+
+                            <p class="tile-number">@Model.TotalCompletedTickets</p>
+                            <p><i>@Model.TicketCompletedTrend</i></p>
+                        </article>
+                    </div>
+
+
+
+                    <div class="tile is-parent numeric-tile errors">
+                        <article class="tile is-child notification has-background-dark has-text-light">
+                            <p class="title">Errors</p>
+                            <p class="tile-number">@Model.Errors</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile">
+                    <div class="tile is-parent numeric-tile">
+                        <article class="tile is-child notification has-background-dark has-text-light">
+                            <p class="title">Headlines Completed</p>
+                            <p class="tile-number">@Model.CompletedHeadlines</p>
+                            <div class="breakdown">
+                                @foreach (var breakdown in Model.CompletedHeadlineBreakdown)
+                                {
+                                    <p>@breakdown.ProjectName : @breakdown.TicketNumber</p>
+                                }
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="tile is-parent numeric-tile">
+                        <article class="tile is-child notification has-background-dark has-text-light">
+                            <p class="title">Headlines Remaining</p>
+                            <p class="tile-number">@Model.RemainingHeadlines</p>
+                            <div class="breakdown">
+                                @foreach (var breakdown in Model.RemainingHeadlineBreakdown)
+                                {
+                                    <p>@breakdown.ProjectName : @breakdown.TicketNumber</p>
+                                }
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="tile is-parent numeric-tile">
+                        <article class="tile is-child notification has-background-dark has-text-light">
+                            <p class="title">Avg Completion Rate</p>
+                            <p class="tile-number">@Model.AverageTimeToCompleted.Span @Model.AverageTimeToCompleted.Unit</p>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
